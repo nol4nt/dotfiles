@@ -67,7 +67,6 @@
 
 #pulseaudio {
     padding-left: 5px;
-    color: #bd93f9;
 }
 
 #clock {
@@ -77,7 +76,6 @@
 
 #battery {
     padding-right: 6px;
-    color: #ff79c6;
 }
 #backlight {
     padding-left: 4px;
@@ -108,12 +106,10 @@
 
 #clock {
     font-weight: bold;
-    color: #ffb86c;
 }
 
 #network {
     /* No styles */
-    color: #8be9fd;
 }
 
 #network.disconnected {
