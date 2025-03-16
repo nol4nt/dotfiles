@@ -1,0 +1,134 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
+{
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "top",
+
+    "position": "top",
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 20,
+
+    "modules-left": [
+        "custom/dunst",
+        "sway/workspaces",
+        "sway/submap"
+    ],
+    "modules-center": [
+	
+    ],
+    "modules-right": [
+        "network",
+        "battery",
+        "group/backlight",
+        "pulseaudio",
+        "clock#date",
+        "clock#time",
+    ],
+
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "custom/dunst": {
+        "return-type": "json",
+        "exec": "$HOME/.local/bin/dunst-mute-status_waybar.sh",
+        "restart-interval": 1
+    },
+    "hyprland/window": {
+        "separate-outputs": true,
+        "max-length": 50
+    },
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        // Connected to AC
+        "format": " {icon}   {capacity}%", // Icon: bolt
+        // Not connected to AC
+        "format-discharging": "{icon}   {capacity}% ({time})",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": true
+    },
+    "group/backlight": {
+        "orientation": "horizontal",
+        "modules": [
+            "backlight",
+            "backlight/slider"
+        ],
+        "drawer": {
+            "transition-left-to-right": false
+        }
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": "{icon} ",
+        "format-icons": [
+            "󰃞", "󰃟", "󰃠"
+        ]
+    },
+    "backlight/slider": {
+        "orientation": "horizontal",
+        "min": 1
+    },
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip": false
+    },
+
+    "clock#date": {
+      "interval": 10,
+      "format": " {:%d.%m.%Y}", // Icon: calendar-alt
+      "tooltip-format": "{:%e %B %Y}"
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "   {essid} ({signalStrength}%)", // Icon: wifi
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 0
+    }
+
+}

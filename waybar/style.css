@@ -1,0 +1,185 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: #FFB86C;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: #FF5555;
+    }
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+    background: #282A36;
+    color: #F8F8F2;
+    font-size: 13px;
+}
+
+* {
+    font-family: Font Awesome v4 Compatibility
+}
+
+/* Each module */
+.modules-right .module {
+    padding-left: 8px;
+    padding-right: 8px;
+    /* center vertically */
+    /*padding-top: 1px;*/
+}
+
+#pulseaudio {
+    padding-left: 5px;
+    color: #bd93f9;
+}
+
+#clock {
+    padding-left: 8px;
+    padding-right: 0px;
+}
+
+#battery {
+    padding-right: 6px;
+    color: #ff79c6;
+}
+#backlight {
+    padding-left: 4px;
+    padding-right: 0px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-name: none;
+    background-color: transparent;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 1s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 1s;
+}
+
+#clock {
+    font-weight: bold;
+    color: #ffb86c;
+}
+
+#network {
+    /* No styles */
+    color: #8be9fd;
+}
+
+#network.disconnected {
+    color: #FFB86C;
+}
+
+#pulseaudio {
+    /* No styles */
+}
+
+#pulseaudio.muted {
+    /* No styles */
+}
+
+#tray {
+    /* No styles */
+}
+
+#window {
+    font-weight: bold;
+}
+
+#workspaces button {
+    /* To compensate for the top border and still have vertical centering */
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #888888;
+}
+
+#workspaces button.active {
+    color: white;
+    background-color: #44475A;
+}
+
+#pulseaudio-slider, #pulseaudio-slider *, #group-audio,
+#backlight-slider, #backlight-slider *, #group-backlight {
+    margin: 0;
+    padding: 0;
+}
+
+slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+trough {
+    min-width: 80px;
+    min-height: 8px;
+    border-radius: 5px;
+    background-color: black;
+}
+
+highlight {
+    min-width: 10px;
+    border-radius: 5px;
+}
+
+#pulseaudio-slider highlight {
+    background-color: @macchiato-teal;
+}
+
+#backlight-slider highlight {
+  background-color: #F8F8F2;
+  border-radius: 10px;
+}
